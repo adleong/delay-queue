@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: messages
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: messages
+  template:
+    metadata:
+      labels:
+        app: messages
+    spec:
+      containers:
+      - image: ghcr.io/adleong/messages:0.0.1
+        imagePullPolicy: Never
+        name: messages
+        ports:
+        - containerPort: 8888
+          name: http
+        env:
+        - name: USER
+          value: K8OkhrmHCOsCyGD_CtHcV-dJFAm-6Olm
+        - name: PASSWORD
+          value: BT6eGxdSsMF9GnCq0UI7kot6wz_XYAfI
+        - name: RABBITMQ_HOST
+          value: hello.default
